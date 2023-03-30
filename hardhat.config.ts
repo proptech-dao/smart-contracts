@@ -1,15 +1,16 @@
+import * as dotenv from 'dotenv';
 
-import * as dotenv from "dotenv";
+import { HardhatUserConfig } from 'hardhat/config';
+import '@nomicfoundation/hardhat-toolbox';
 
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-toolbox";
+dotenv.config();
 
-dotenv.config();  
-
-const { PRIVATE_KEY, SCAN_KEY, MUMBAI_RPC_URL, POLYGON_RPC_URL } = process.env;
+const {
+  PRIVATE_KEY, SCAN_KEY, MUMBAI_RPC_URL, POLYGON_RPC_URL,
+} = process.env;
 
 const config: HardhatUserConfig = {
-  solidity: "0.8.18",
+  solidity: '0.8.18',
   networks: {
     hardhat: {
       allowUnlimitedContractSize: true,
@@ -29,9 +30,11 @@ const config: HardhatUserConfig = {
     apiKey: String(SCAN_KEY),
   },
   typechain: {
-    outDir: "typechain-types",
-    target: "ethers-v5",
-    alwaysGenerateOverloads: true, // should overloads with full signatures like deposit(uint256) be generated always, even if there are no overloads?
+    outDir: 'typechain-types',
+    target: 'ethers-v5',
+    // should overloads with full signatures like deposit(uint256) be generated always,
+    // even if there are no overloads?
+    alwaysGenerateOverloads: true,
   },
 };
 
