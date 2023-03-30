@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract ProptechAgreement is ERC721 {
     constructor() ERC721("ProptechAgreement", "DAC") {
         _safeMint(msg.sender, 1);
-    }
+         }
 
     function _baseURI() override internal view virtual returns (string memory) {
         return "bafybeid5bk5psrbbgk3m2eft47blcy4q4rkln4zgyhtbkpqbtpy2mc5hjy";
