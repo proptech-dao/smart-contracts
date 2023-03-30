@@ -1,8 +1,15 @@
 import { ethers } from 'hardhat';
+import { PolygonGasCalculatorService } from '../utils/gasCalculator';
 
 async function main() {
+  const [owner] = await ethers.getSigners();
+  console.log('deploying from: ', owner.address);
+
   const ProptechAgreementFactory = await ethers.getContractFactory('ProptechAgreement');
-  const pa = await ProptechAgreementFactory.deploy();
+
+  const { maxFeePerGas, maxPriorityFeePerGas } = await new PolygonGasCalculatorService().calcGas();
+  const pa = await ProptechAgreementFactory.deploy({ maxFeePerGas, maxPriorityFeePerGas });
+
   await pa.deployed();
 
   console.log('Agreement address: ', pa.address);
