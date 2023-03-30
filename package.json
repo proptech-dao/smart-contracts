@@ -6,6 +6,9 @@
   "scripts": {
     "test": "npx hardhat test"
   },
+    "engines": {
+    "node": ">=16.0.0"
+  },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
     "@ethersproject/providers": "^5.4.7",
