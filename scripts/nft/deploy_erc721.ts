@@ -1,14 +1,14 @@
-import { run } from 'hardhat';
+import { ethers } from 'hardhat';
 
 async function main() {
-  const address = '0x493f2ACFeA42aD4dfc7477fA6c7B806004c3FFE5';
+  const Nft = await ethers.getContractFactory('TinaToken');
+  const nft = await Nft.deploy();
 
-  await run('verify:verify', {
-    address,
-    constructorArguments: [
+  await nft.deployed();
 
-    ],
-  });
+  console.log(
+    nft.address,
+  );
 }
 
 // We recommend this pattern to be able to use async/await everywhere
