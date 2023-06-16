@@ -26,7 +26,7 @@ describe('Upgrade Holiday Token', () => {
 
   it('should get the new version from the proxy', async () => {
     const HctFactoryV0_2_0 = await ethers.getContractFactory('HolidayClubTokenV0_2_0');
-    const hctInstance = await HctFactoryV0_2_0.attach(hctAddress);
+    const hctInstance = HctFactoryV0_2_0.attach(hctAddress);
     const version = await hctInstance.version();
     expect(version).to.be.equal('0.2.0');
   });
