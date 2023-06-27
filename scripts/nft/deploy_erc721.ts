@@ -1,14 +1,18 @@
-import { ethers } from 'hardhat';
+import { ethers, upgrades } from 'hardhat';
 
 async function main() {
-  const Nft = await ethers.getContractFactory('TinaToken');
-  const nft = await Nft.deploy();
+  const HctFactory = await ethers.getContractFactory('HolidayClubToken');
 
-  await nft.deployed();
+  const proxy = await upgrades.deployProxy(HctFactory, [], {
+    initializer: 'initialize',
+  });
+  await proxy.deployed();
 
-  console.log(
-    nft.address,
-  );
+  const hctAddress = proxy.address;
+  const version = await proxy.version();
+
+  console.log('contract address: ', hctAddress);
+  console.log('hct version: ', version);
 }
 
 // We recommend this pattern to be able to use async/await everywhere

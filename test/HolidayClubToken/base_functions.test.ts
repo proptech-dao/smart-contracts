@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import { expect } from 'chai';
-import { BigNumber } from 'ethers';
 import { ethers, upgrades } from 'hardhat';
 
 describe('Holiday club token basic functionality', () => {
