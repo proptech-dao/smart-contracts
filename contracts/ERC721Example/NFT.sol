@@ -5,8 +5,8 @@ import "./ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract TinaToken is ERC721, Ownable {
-    constructor() ERC721("TinaToken", "TTK") {
+contract NFT is ERC721, Ownable {
+    constructor() ERC721("NFT", "NFT") {
         safeMint(_msgSender(), 0);
     }
 
@@ -15,6 +15,6 @@ contract TinaToken is ERC721, Ownable {
     }
 
     function _baseURI() internal view virtual override returns (string memory) {
-        return "ipfs://bafybeicfv56h6rl4fpqldnyl2rejn65hxm2dktfqvjrpas3pyndotkieiu/";
+        return "ipfs://bafybeicwdeo6nywiicnzr3v7wpgv3v2r63byniqcl2a3ifdjnadjvmdbea/";
     }
 }
