@@ -1,7 +1,7 @@
 import { ethers, upgrades } from 'hardhat';
 
 async function main() {
-  const HctFactory = await ethers.getContractFactory('HolidayClubToken');
+  const HctFactory = await ethers.getContractFactory('HolidayClubTokenV0_2_0');
 
   const proxy = await upgrades.deployProxy(HctFactory, [], {
     initializer: 'initialize',

@@ -6,4 +6,4 @@ This repo contains all smart contract related to our projects and governance
 
 # Holiday Token 
 
-The current address being used in mumbai is `0x46eD7a1A676BdaD1404E18acc39d1701995EcF6c`.
+The current address being used in mumbai is `0xFb196E0580317100EaE8b08cFE3A6500a2039358`.
