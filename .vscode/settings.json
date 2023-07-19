@@ -5,5 +5,10 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
+    "[solidity]": {
+        "editor.defaultFormatter": "JuanBlanco.solidity", 
+          "editor.formatOnSave": true
+  
+      },
     "dotenv.enableAutocloaking": false,
 }

@@ -6,7 +6,7 @@ describe('Holiday club token basic functionality', () => {
   let hctAddress: string;
 
   it('Should deploy the holiday club token', async () => {
-    const HctFactory = await ethers.getContractFactory('HolidayClubToken');
+    const HctFactory = await ethers.getContractFactory('HolidayClubTokenV0_2_0');
 
     const proxy = await upgrades.deployProxy(HctFactory, [], {
       initializer: 'initialize',
@@ -15,14 +15,16 @@ describe('Holiday club token basic functionality', () => {
 
     hctAddress = proxy.address;
     const version = await proxy.version();
-    expect(version).to.be.equal('0.1.0');
+    expect(version).to.be.equal('0.2.0');
   });
 
-  it('The holiday club should allow to mint a token', async () => {
-    const [main] = await ethers.getSigners();
-    const HctFactory = await ethers.getContractFactory('HolidayClubToken');
+  it('The holiday club should allow to mint a token and the minted token should emit an event', async () => {
+    const [owner] = await ethers.getSigners();
+
+    const HctFactory = await ethers.getContractFactory('HolidayClubTokenV0_2_0');
 
     const hctContract = HctFactory.attach(hctAddress);
-    hctContract.safeMint(main.address, 'tokenUri');
+    const tx = hctContract.safeMint(owner.address, 'tokenUri');
+    await expect(tx).to.emit(hctContract, 'Mint').withArgs(owner.address, 0, 'tokenUri');
   });
 });

@@ -1,7 +1,7 @@
 import { run } from 'hardhat';
 
 async function main() {
-  const address = '0x09bAc812BeD0AcB6f19766037578EbC78391e379';
+  const address = '0xd27aCb384fA34E51c00B55812ACaFA388F027F38';
 
   await run('verify:verify', {
     address,
