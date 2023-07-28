@@ -4,7 +4,7 @@ import nftJsons from '../../assets/hct/many.json';
 
 /**
  *
- * this script uses the assets in the /assets folder in the root of this directory
+ * Uses the assets in the /assets folder in the root of this directory
  * to push data to ipfs through web3.storage
  *
  * After this step, it's possible to push these to an NFT.

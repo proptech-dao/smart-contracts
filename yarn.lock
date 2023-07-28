@@ -3638,7 +3638,7 @@ ethers@^4.0.0-beta.1, ethers@^4.0.32, ethers@^4.0.40:
     uuid "2.0.1"
     xmlhttprequest "1.8.0"
 
-ethers@^5.0.13, ethers@^5.4.7:
+ethers@^5.0.13, ethers@^5.4.7, ethers@^5.7.2:
   version "5.7.2"
   resolved "https://registry.npmjs.org/ethers/-/ethers-5.7.2.tgz"
   integrity sha512-wswUsmWo1aOK8rR7DIKiWSw9DbLWe6x98Jrn8wcTflTVvaXhAMaB5zGAXy0GYQEQp9iO1iSHWVyARQm11zUtyg==
@@ -8291,6 +8291,13 @@ url-set-query@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/url-set-query/-/url-set-query-1.0.0.tgz#016e8cfd7c20ee05cafe7795e892bd0702faa339"
   integrity sha512-3AChu4NiXquPfeckE5R5cGdiHCMWJx1dwCWOmWIL4KHAziJNOFIYJlpGFeKDvwLPHovZRCxK3cYlwzqI9Vp+Gg==
+
+userop@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/userop/-/userop-0.3.1.tgz#848a0e7a68211a13d7b7146d46b946b27f3d9137"
+  integrity sha512-d3D5ZrO8NQHwH514FwMZz+nHrl4ECrA0lxoBAx1plCfeebxsombnjIPWF7VvJvsFYuqncnBBZ9X+jDo+QB2aKA==
+  dependencies:
+    ethers "^5.7.2"
 
 utf-8-validate@^5.0.2:
   version "5.0.10"
