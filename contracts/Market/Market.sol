@@ -17,13 +17,19 @@ contract NFTMarketplace {
     mapping(address => mapping(uint256 => Offer)) public offers;
 
     event NFTListed(
+        address indexed seller,
         address indexed nftAddress,
         uint256 indexed tokenId,
         uint256 price,
         address paymentToken
     );
-    event NFTUnlisted(address indexed nftAddress, uint256 indexed tokenId);
+    event NFTUnlisted(
+        address indexed seller,
+        address indexed nftAddress,
+        uint256 indexed tokenId
+    );
     event NFTPurchased(
+        address indexed seller,
         address indexed nftAddress,
         uint256 indexed tokenId,
         address buyer,
@@ -50,7 +56,7 @@ contract NFTMarketplace {
             isForSale: true
         });
 
-        emit NFTListed(nftAddress, tokenId, price, paymentToken);
+        emit NFTListed(msg.sender, nftAddress, tokenId, price, paymentToken);
     }
 
     function unlistNFT(address nftAddress, uint256 tokenId) external {
@@ -60,7 +66,7 @@ contract NFTMarketplace {
         offer.isForSale = false;
         offers[nftAddress][tokenId] = offer;
 
-        emit NFTUnlisted(nftAddress, tokenId);
+        emit NFTUnlisted(msg.sender, nftAddress, tokenId);
     }
 
     function buyNFT(address nftAddress, uint256 tokenId) external {
@@ -83,6 +89,12 @@ contract NFTMarketplace {
             offer.tokenId
         );
 
-        emit NFTPurchased(nftAddress, tokenId, msg.sender, offer.price);
+        emit NFTPurchased(
+            offer.seller,
+            nftAddress,
+            tokenId,
+            msg.sender,
+            offer.price
+        );
     }
 }
