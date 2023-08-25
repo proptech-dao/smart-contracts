@@ -2,10 +2,11 @@ import { ethers } from 'hardhat';
 import { expect } from 'chai';
 import { Contract } from 'ethers';
 import { SignerWithAddress } from '@nomiclabs/hardhat-ethers/signers';
+import { HolidayClubToken as IHolidayClubToken } from '../../typechain-types';
 
 describe('NFTMarketplace', () => {
   let NFTMarketplace: Contract;
-  let HolidayClubToken: Contract;
+  let HolidayClubToken: IHolidayClubToken;
   let MockERC20: Contract;
   let buyer: SignerWithAddress;
   let seller: SignerWithAddress;
@@ -43,8 +44,13 @@ describe('NFTMarketplace', () => {
       .listNFT(HolidayClubToken.address, tokenId, price, MockERC20.address);
 
     const offer = await NFTMarketplace.offers(HolidayClubToken.address, tokenId);
+
+    const owner = await HolidayClubToken.ownerOf(tokenId);
+
+    expect(owner).to.equal(NFTMarketplace.address);
     expect(offer.isForSale).to.equal(true);
     expect(offer.seller).to.equal(seller.address);
+
     expect(offer.price.toString()).to.equal(price.toString());
     expect(offer.paymentToken).to.equal(MockERC20.address);
   });

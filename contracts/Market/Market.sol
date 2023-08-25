@@ -56,6 +56,12 @@ contract NFTMarketplace {
             isForSale: true
         });
 
+        IERC721Upgradeable(nftAddress).transferFrom(
+            msg.sender,
+            address(this),
+            tokenId
+        );
+
         emit NFTListed(msg.sender, nftAddress, tokenId, price, paymentToken);
     }
 
@@ -84,7 +90,7 @@ contract NFTMarketplace {
 
         // Transfer NFT to the buyer
         IERC721Upgradeable(offer.nftAddress).transferFrom(
-            offer.seller,
+            address(this),
             msg.sender,
             offer.tokenId
         );
