@@ -38,7 +38,7 @@ describe('NFTMarketplace', () => {
   it('Should allow a user to list their NFT for a specified ERC20 token price', async () => {
     const price = ethers.utils.parseUnits('1', 'ether');
 
-    await HolidayClubToken.connect(seller).approve(NFTMarketplace.address, tokenId);
+    await HolidayClubToken.connect(seller).setApprovalForAll(NFTMarketplace.address, true);
 
     await NFTMarketplace.connect(seller)
       .listNFT(HolidayClubToken.address, tokenId, price, MockERC20.address);
