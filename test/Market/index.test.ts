@@ -46,6 +46,9 @@ describe('NFTMarketplace', () => {
     const offer = await NFTMarketplace.offers(HolidayClubToken.address, tokenId);
 
     const owner = await HolidayClubToken.ownerOf(tokenId);
+    const isApproved = await HolidayClubToken.isApprovedForAll(seller.address, owner);
+
+    expect(isApproved).to.equal(true);
 
     expect(owner).to.equal(NFTMarketplace.address);
     expect(offer.isForSale).to.equal(true);
